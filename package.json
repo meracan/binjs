@@ -1,0 +1,17 @@
+{
+  "name": "binary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "README.js",
+  "type": "module",
+  "scripts": {
+    "start": "node test/test_binaryjs.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lodash": "^4.17.15",
+    "tape": "^5.0.0"
+  }
+}
