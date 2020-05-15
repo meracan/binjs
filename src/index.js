@@ -66,7 +66,7 @@ class IO {
     this.len=Math.max(this.pos,this.len);
   }
   close(){
-    return this.buffer.subarray(0, this.len)
+    return this.buffer.slice(0, this.len)
   }
   
    
