@@ -1,17 +1,28 @@
 {
-  "name": "binary",
+  "name": "binjs",
   "version": "1.0.0",
   "description": "",
-  "main": "README.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "node test/test_binaryjs.js",
+    "build": "webpack --info-verbosity verbose --display-modules",
+    "start": "node test/test_binjs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lodash": "^4.17.15",
-    "tape": "^5.0.0"
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "lodash": "^4.17.20",
+    "tape": "^5.0.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "lodash.isinteger": "^4.0.4",
+    "lodash.isstring": "^4.0.1",
+    "lodash.istypedarray": "^4.0.1"
   }
 }
