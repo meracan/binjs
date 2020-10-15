@@ -3,7 +3,7 @@ import {formatToDtype,dtypeToFormat,array2typed as a2t,string2char as s2c} from 
 
 export const write=(array)=>{
     if(!Array.isArray(array))array=[array];
-    const _size=array.reduce((a,b)=>a+b.byteLength+16+1+4+1+4*10,0)+1; //TODO, assumes ndim=10
+    const _size=array.reduce((a,b)=>a+b.byteLength+64+1+4+1+4*10,0)+1; //TODO, assumes ndim=10
     
     const f = new IO(_size);
    
@@ -18,7 +18,7 @@ export const write=(array)=>{
       if(size!=data.length)throw Error("Data shape does not match data length");
       const format=dtypeToFormat[data.constructor.name];
       f.write([
-        s2c(vname,16),
+        s2c(vname,64),
         s2c(format,1),
         a2t(size,"I"),
         a2t(ndim,"B"),
@@ -30,14 +30,17 @@ export const write=(array)=>{
 };
 
 export const read= (buffer)=>{
+    
     const obj={};
+   
     const f =new IO(buffer);
     const [nvar]=f.read('B');
+   
     for(let i=0;i<nvar;i++){
-      const [_vname,format,size,ndim]=f.read('16ssIB');
+      const [_vname,format,size,ndim]=f.read('64ssIB');
       const [shape]=f.read(`${parseFloat(ndim)}I`);
       const [data]=f.read(`${parseFloat(size)}${format}`);
-      const vname=_vname.trim();
+      const vname=_vname.replace(/\0/g, '').trim();
       data.vname=vname;
       data.shape=shape;
       obj[vname]=data;

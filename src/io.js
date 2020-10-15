@@ -10,11 +10,12 @@ const encoder =new TextEncoder()
 
 export default class IO {
   constructor(value,options={}){
+    
     const newBuffer=typeof value==="number"?true:false;
     this._uint8=new Uint8Array(value);
     this.pos=0;
     this.len=0;
-    this.fmtPattern=/\d+[AxcbBhHsSfdiIlL]|[AxcbBhHsSfdiIlL]/g;
+    this.fmtPattern=/\d+[AxcbBhHsSfdiIlLM]|[AxcbBhHsSfdiIlLM]/g;
     this.quantityPattern=/\d+|\w/g;
     this.flipEndianness=options.flipEndianness||false;
     this.verbose=options.verbose || false;
@@ -32,7 +33,9 @@ export default class IO {
     } 
   }
   read(fmt){
+    
     const groups=fmt.match(this.fmtPattern);
+    if(!groups)console.log(groups)
     return groups.map(group=>{
       const sub=group.match(this.quantityPattern);
       if(sub.length==1)sub.splice(0, 0, 1); // Change I to 1I

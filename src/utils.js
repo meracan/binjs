@@ -24,6 +24,7 @@ export const formatToDtype = {
   "q":BigInt64Array,
   "f":Float32Array,
   "d":Float64Array,
+  "M":Float64Array,
 }
 export const formatBytes = {
   "s":1,
@@ -38,6 +39,7 @@ export const formatBytes = {
   "Q":8,
   "f":4,
   "d":8,
+  "M":8,
 };
 
 

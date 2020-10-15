@@ -5,6 +5,8 @@ Read and write binary files to transfer data over http protocol.
 ## Installation
 ```bash
 npm i -s @meracan/binjs
+# or
+git clone 
 ```
 
 ## Test

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "webpack --info-verbosity verbose --display-modules",
     "start": "node test/test_binjs.js",
+    "testread": "node test/test_readpy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
